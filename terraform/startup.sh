@@ -12,4 +12,4 @@ sudo npm run build || echo "Nenhum build necessário"
 sudo pm2 start dist/index.js --name typescript-api
 sudo pm2 startup systemd
 sudo pm2 save
-sudo echo "FINISHED"
+sudo echo "FINISHED."
