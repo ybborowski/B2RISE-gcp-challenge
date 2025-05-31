@@ -9,7 +9,17 @@ const app: Express = express();
 const port = 80;
 
 app.get( '/', ( req: Request, res: Response ) => {
-  res.send( 'Olá do GCP com TypeScript e Express!' );
+  res.send( `Olá do GCP com TypeScript e Express!<BR><BR>
+
+para publicar uma mensagem no Pub/Sub basta acessar: <BR></BR>
+http://[IP_DA_INSTANCIA]/produce?message=Olá do Endpoint!<BR></BR>
+
+para consomir uma única mensagem do Pub/Sub basta acessar: <BR></BR>
+http://[IP_DA_INSTANCIA]/consume<BR></BR>
+
+` );
+
+
 } );
 
 app.listen( port, () => {

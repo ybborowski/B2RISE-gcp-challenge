@@ -4,6 +4,23 @@ provider "google" {
   zone    = var.zone
 }
 
+resource "google_service_account" "api_sa" {
+  account_id   = "api-pubsub-sa"
+  display_name = "Service Account for Pub/Sub Access"
+}
+
+resource "google_project_iam_member" "pubsub_publisher" {
+  project = var.project_id
+  role    = "roles/pubsub.publisher"
+  member  = "serviceAccount:${google_service_account.api_sa.email}"
+}
+
+resource "google_project_iam_member" "pubsub_subscriber" {
+  project = var.project_id
+  role    = "roles/pubsub.subscriber"
+  member  = "serviceAccount:${google_service_account.api_sa.email}"
+}
+
 resource "google_compute_network" "vpc_network" {
   name = "my-vpc"
 }
@@ -22,7 +39,7 @@ resource "google_compute_instance" "vm_instance" {
 
   boot_disk {
     initialize_params {
-      image = "debian-cloud/debian-11"
+      image = "ubuntu-os-cloud/ubuntu-2204-lts"
     }
   }
 
@@ -34,6 +51,11 @@ resource "google_compute_instance" "vm_instance" {
   metadata_startup_script = file("${path.module}/startup.sh")
 
   tags = ["http-server", "ssh-server"]
+
+  service_account {
+    email  = google_service_account.api_sa.email
+    scopes = ["https://www.googleapis.com/auth/cloud-platform"]
+  }
 }
 
 resource "google_compute_firewall" "default" {

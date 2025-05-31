@@ -1,6 +1,5 @@
 # IDEs and editors
 /.idea
-.terraform
 .project
 .classpath
 .c9/
@@ -8,6 +7,15 @@
 .settings/
 *.sublime-workspace
 
+# Local .terraform directories
+**/.terraform/*
+*.auto.tfvars
+.terraformrc
+*.tfstate*
+
+# Ignore CLI configuration files
+.terraformrc
+terraform.rc
 # IDE - VSCode
 .vscode/*
 !.vscode/settings.json

@@ -10,28 +10,6 @@ terraform init
 terraform apply -var="project_id=seu-projeto-id"
 ```
 
-## 🌐 Deploy da API na VM
-
-Acesse sua VM via SSH, clone o projeto e execute:
-
-```bash
-sudo apt update
-sudo apt install -y nodejs npm git
-git clone <repo-url>
-cd api
-npm install
-npm run build
-sudo npm start
-```
-
-Para rodar com PM2 (opcional):
-
-```bash
-npm install -g pm2
-pm2 start dist/index.js
-pm2 startup
-pm2 save
-```
 
 ## 📌 Endpoints
 
@@ -54,13 +32,20 @@ Este projeto cria:
 - **Tópico:** `api-topic`
 - **Subscription:** `api-subscription`
 
-### Endpoint
+### Endpoints
 
+- `GET /produce?message=Olá via endpoint!` → Publica uma mensagem no topico que será recebida no /consume.
 - `GET /consume` → Consome uma única mensagem do Pub/Sub e exibe no navegador.
 
 ### Como testar
 
 Publique uma mensagem no tópico:
+
+```endpoint
+acesse o endpoint:
+http://<IP_DA_INSTANCIA>/produce?message=Olá do Endpoint!
+
+```
 
 ```bash
 gcloud pubsub topics publish api-topic --message="Olá da CLI!"
