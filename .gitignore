@@ -9,14 +9,12 @@
 
 # Local .terraform directories
 **/.terraform/*
-*.auto.tfvars
-.terraformrc
-*.tfstate
-*.tfstate.backup
+**/*.auto.tfvars
+**/.terraformrc
+**/*.tfstate
+**/*.tfstate.backup
+**/terraform.rc
 
-# Ignore CLI configuration files
-.terraformrc
-terraform.rc
 # IDE - VSCode
 .vscode/*
 !.vscode/settings.json
