@@ -11,8 +11,9 @@
 terraform/.terraform/*
 terraform/*.auto.tfvars
 terraform/.terraformrc
-terraform/*.tfstate
-terraform/*.tfstate.backup
+terraform/terraform.tfstate
+terraform/terraform.tfstate.backup
+terraform/.terraform.lock.hcl
 terraform/terraform.rc
 terraform/sa-key.json
 
