@@ -8,12 +8,13 @@
 *.sublime-workspace
 
 # Local .terraform directories
-**/.terraform/*
-**/*.auto.tfvars
-**/.terraformrc
-**/*.tfstate
-**/*.tfstate.backup
-**/terraform.rc
+terraform/.terraform/*
+terraform/*.auto.tfvars
+terraform/.terraformrc
+terraform/*.tfstate
+terraform/*.tfstate.backup
+terraform/terraform.rc
+terraform/sa-key.json
 
 # IDE - VSCode
 .vscode/*
