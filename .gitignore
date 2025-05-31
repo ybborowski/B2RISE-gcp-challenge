@@ -11,7 +11,8 @@
 **/.terraform/*
 *.auto.tfvars
 .terraformrc
-*.tfstate*
+*.tfstate
+*.tfstate.backup
 
 # Ignore CLI configuration files
 .terraformrc
